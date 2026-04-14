@@ -1,53 +1,53 @@
 # PDF CUSTOM AI 📄✨
 
-A powerful, high-end PDF processing utility built as a modern monorepo. This application provides a seamless experience for common PDF tasks like reordering pages, adding watermarks, and compressing files, all with a premium user interface.
+Utilitas pemrosesan PDF canggih dan modern yang dibangun dengan struktur monorepo. Aplikasi ini memberikan pengalaman mulus untuk tugas-tugas PDF umum seperti menyusun ulang halaman, menambahkan watermark, dan kompresi file, semuanya dengan antarmuka pengguna (UI) yang premium.
 
-## 🚀 Key Features
+## 🚀 Fitur Utama
 
-- **PDF Reorder**: Easily drag and drop pages to reorganize your documents.
-- **PDF Watermark**: Add text or image watermarks to protect your files.
-- **PDF Compress**: Reduce file size without compromising quality.
-- **Activity History**: Keep track of your processed files with a local SQLite-backed history.
-- **Premium UI**: Crafted with Tailwind CSS and Lucide icons for a sleek, responsive experience.
+- **PDF Reorder**: Susun ulang halaman dokumen Anda dengan mudah menggunakan fitur drag-and-drop.
+- **PDF Watermark**: Tambahkan watermark teks atau gambar untuk melindungi dokumen Anda.
+- **PDF Compress**: Perkecil ukuran file tanpa mengurangi kualitas secara signifikan.
+- **Riwayat Aktivitas**: Pantau semua file yang telah diproses melalui riwayat lokal yang didukung oleh SQLite.
+- **UI Premium**: Didesain menggunakan Tailwind CSS dan Lucide Icons untuk pengalaman yang elegan dan responsif.
 
-## 🛠️ Tech Stack
+## 🛠️ Teknologi yang Digunakan
 
 ### Frontend
-- **Framework**: [React](https://reactjs.org/) with [Vite](https://vitejs.dev/)
+- **Framework**: [React](https://reactjs.org/) dengan [Vite](https://vitejs.dev/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **State/Routing**: React Router
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **PDF Logic**: [pdf-lib](https://pdf-lib.js.org/) & [pdfjs-dist](https://mozilla.github.io/pdf.js/)
+- **Ikon**: [Lucide React](https://lucide.dev/)
+- **Logika PDF**: [pdf-lib](https://pdf-lib.js.org/) & [pdfjs-dist](https://mozilla.github.io/pdf.js/)
 
 ### Backend
 - **Framework**: [Hono](https://hono.dev/) (Node.js runtime)
-- **Database**: [SQLite](https://sqlite.org/) via [Prisma ORM](https://www.prisma.io/)
-- **PDF Processing**: [Muhammara](https://github.com/galkahana/MuhammaraJS) for heavy server-side operations.
+- **Database**: [SQLite](https://sqlite.org/) melalui [Prisma ORM](https://www.prisma.io/)
+- **Pemrosesan PDF**: [Muhammara](https://github.com/galkahana/MuhammaraJS) untuk operasi server-side yang berat.
 
 ### Monorepo
-- **Package Manager**: [pnpm](https://pnpm.io/) workspaces
+- **Manajer Paket**: [pnpm](https://pnpm.io/) workspaces
 
-## 📦 Installation & Setup
+## 📦 Instalasi & Persiapan
 
-Follow these steps to get the project running locally:
+Ikuti langkah-langkah berikut untuk menjalankan proyek di perangkat lokal Anda:
 
-### 1. Prerequisites
-- [Node.js](https://nodejs.org/) (v18 or higher)
-- [pnpm](https://pnpm.io/installation) installed globally
+### 1. Prasyarat
+- [Node.js](https://nodejs.org/) (v18 atau lebih tinggi)
+- [pnpm](https://pnpm.io/installation) sudah terinstal secara global
 
-### 2. Clone the Repository
+### 2. Clone Repositori
 ```bash
 git clone https://github.com/AlAmienPorto/PDF-CUSTOM-AI.git
 cd PDF-CUSTOM-AI
 ```
 
-### 3. Install Dependencies
+### 3. Instal Dependensi
 ```bash
 pnpm install
 ```
 
-### 4. Database Setup
-The app uses SQLite for ease of use. You need to generate the Prisma client and push the schema:
+### 4. Persiapan Database
+Aplikasi ini menggunakan SQLite agar mudah digunakan. Anda perlu melakukan generate Prisma client dan menyesuaikan skema:
 ```bash
 cd apps/server
 pnpm prisma generate
@@ -55,23 +55,23 @@ pnpm prisma db push
 cd ../..
 ```
 
-### 5. Running the Application
-From the root directory, run:
+### 5. Menjalankan Aplikasi
+Dari direktori root, jalankan perintah:
 ```bash
 pnpm dev
 ```
 - **Frontend**: http://localhost:5173
 - **Backend API**: http://localhost:3000
 
-## 📖 Usage
+## 📖 Cara Penggunaan
 
-1. **Dashboard**: Get an overview of your recent PDF activities.
-2. **Select Tool**: Choose from Reorder, Watermark, or Compress from the sidebar or dashboard.
-3. **Upload & Process**: Drop your PDF files, configure your settings, and download the result instantly.
-4. **History**: Access previously processed files and logs.
+1. **Dashboard**: Lihat ringkasan aktivitas PDF terbaru Anda.
+2. **Pilih Alat**: Pilih menu Reorder, Watermark, atau Compress dari sidebar atau dashboard.
+3. **Unggah & Proses**: Masukkan file PDF Anda, atur konfigurasi yang diinginkan, dan unduh hasilnya secara instan.
+4. **Riwayat**: Akses kembali log dan file yang pernah diproses sebelumnya.
 
-## 📄 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 📄 Lisensi
+Proyek ini dilisensikan di bawah Lisensi MIT - lihat file [LICENSE](LICENSE) untuk detailnya.
 
 ---
-Built with ❤️ by [AlAmienPorto](https://github.com/AlAmienPorto)
+Dibuat dengan ❤️ oleh [AlAmienPorto](https://github.com/AlAmienPorto)
