@@ -1,7 +1,7 @@
 {
   "installCommand": "npx pnpm install --no-frozen-lockfile",
   "buildCommand": "npx pnpm run build",
-  "outputDirectory": "apps/web/dist",
+  "outputDirectory": "dist",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
