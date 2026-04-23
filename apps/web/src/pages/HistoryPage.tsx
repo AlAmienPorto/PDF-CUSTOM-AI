@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { History, FileText, CheckCircle2, XCircle, Clock, ArrowRight } from "lucide-react"
+import { History, FileText, CheckCircle2, XCircle, Clock } from "lucide-react"
 
 interface Activity {
   id: string
