@@ -40,31 +40,31 @@ export function HistoryPage() {
   }
 
   return (
-    <div className="container max-w-screen-xl mx-auto px-4 py-12 relative">
+    <div className="container max-w-screen-xl mx-auto px-4 sm:px-6 py-6 sm:py-12 relative">
       {/* Background Glow */}
-      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-red-500/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-red-500/10 blur-[80px] sm:blur-[120px] rounded-full pointer-events-none" />
       
-      <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-12 gap-4">
         <div>
-          <h1 className="text-4xl font-extrabold tracking-tight mb-2 bg-gradient-to-r from-foreground to-foreground/60 bg-clip-text text-transparent">
+          <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight mb-1 sm:mb-2 bg-gradient-to-r from-foreground to-foreground/60 bg-clip-text text-transparent">
             Riwayat Aktivitas
           </h1>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-sm sm:text-lg">
             Pantau operasi PDF terbaru dan log audit Anda.
           </p>
         </div>
-        <div className="bg-card/50 backdrop-blur-md border border-border/50 p-4 rounded-2xl flex items-center gap-4">
+        <div className="bg-card/50 backdrop-blur-md border border-border/50 p-3 sm:p-4 rounded-xl sm:rounded-2xl flex items-center gap-3 sm:gap-4 self-start">
           <div className="bg-primary/20 p-2 rounded-xl">
-            <History className="w-6 h-6 text-primary" />
+            <History className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
           </div>
           <div>
             <p className="text-xs text-muted-foreground uppercase tracking-widest font-bold">Total Operasi</p>
-            <p className="text-2xl font-black">{logs.length}</p>
+            <p className="text-xl sm:text-2xl font-black">{logs.length}</p>
           </div>
         </div>
       </div>
 
-      <div className="bg-card/30 backdrop-blur-3xl rounded-[2.5rem] border border-border/50 overflow-hidden shadow-2xl">
+      <div className="bg-card/30 backdrop-blur-3xl rounded-2xl sm:rounded-[2.5rem] border border-border/50 overflow-hidden shadow-2xl">
         {isLoading ? (
           <div className="p-24 flex flex-col items-center justify-center">
             <Clock className="w-12 h-12 text-primary animate-spin mb-4" />
@@ -84,63 +84,90 @@ export function HistoryPage() {
             </a>
           </div>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="border-b border-border/50 bg-muted/20">
-                  <th className="px-8 py-5 text-sm font-bold text-muted-foreground uppercase tracking-wider">Nama File</th>
-                  <th className="px-8 py-5 text-sm font-bold text-muted-foreground uppercase tracking-wider">Alat</th>
-                  <th className="px-8 py-5 text-sm font-bold text-muted-foreground uppercase tracking-wider">Ukuran</th>
-                  <th className="px-8 py-5 text-sm font-bold text-muted-foreground uppercase tracking-wider">Waktu</th>
-                  <th className="px-8 py-5 text-sm font-bold text-muted-foreground uppercase tracking-wider">Status</th>
-                  <th className="px-8 py-5 text-sm font-bold text-muted-foreground uppercase tracking-wider"></th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/30">
-                {logs.map((log) => (
-                  <tr key={log.id} className="group hover:bg-white/[0.02] transition-colors">
-                    <td className="px-8 py-6">
-                      <div className="flex items-center gap-3">
-                        <div className="p-2 rounded-lg bg-red-500/10 border border-red-500/20">
-                          <FileText className="w-5 h-5 text-red-500" />
-                        </div>
-                        <span className="font-semibold truncate max-w-[200px]" title={log.fileName}>
-                          {log.fileName}
-                        </span>
-                      </div>
-                    </td>
-                    <td className="px-8 py-6">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-primary/10 text-primary border border-primary/20 capitalize">
-                        {log.toolId.replace('-', ' ')}
-                      </span>
-                    </td>
-                    <td className="px-8 py-6 text-muted-foreground text-sm font-medium">
-                      {formatSize(log.fileSize)}
-                    </td>
-                    <td className="px-8 py-6 text-muted-foreground text-sm">
-                      {new Date(log.createdAt).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' })}
-                    </td>
-                    <td className="px-8 py-6">
-                      {log.status === 'SUCCESS' ? (
-                        <span className="flex items-center gap-1.5 text-emerald-500 text-sm font-bold">
-                          <CheckCircle2 className="w-4 h-4" /> Berhasil
-                        </span>
-                      ) : (
-                        <span className="flex items-center gap-1.5 text-red-500 text-sm font-bold">
-                          <XCircle className="w-4 h-4" /> Gagal
-                        </span>
-                      )}
-                    </td>
-                    <td className="px-8 py-6 text-right">
-                      <button className="p-2 rounded-lg hover:bg-muted opacity-0 group-hover:opacity-100 transition-all">
-                        <ArrowRight className="w-5 h-5" />
-                      </button>
-                    </td>
+          <>
+            {/* Mobile Card View */}
+            <div className="sm:hidden divide-y divide-border/30">
+              {logs.map((log) => (
+                <div key={log.id} className="p-4 flex flex-col gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-red-500/10 border border-red-500/20 shrink-0">
+                      <FileText className="w-4 h-4 text-red-500" />
+                    </div>
+                    <span className="font-semibold text-sm truncate flex-1" title={log.fileName}>
+                      {log.fileName}
+                    </span>
+                    {log.status === 'SUCCESS' ? (
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                    ) : (
+                      <XCircle className="w-4 h-4 text-red-500 shrink-0" />
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-primary/10 text-primary border border-primary/20 capitalize">
+                      {log.toolId.replace('-', ' ')}
+                    </span>
+                    <span className="text-xs text-muted-foreground">{formatSize(log.fileSize)}</span>
+                    <span className="text-xs text-muted-foreground ml-auto">
+                      {new Date(log.createdAt).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' })}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop Table View */}
+            <div className="hidden sm:block overflow-x-auto">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="border-b border-border/50 bg-muted/20">
+                    <th className="px-4 md:px-8 py-4 md:py-5 text-xs md:text-sm font-bold text-muted-foreground uppercase tracking-wider">Nama File</th>
+                    <th className="px-4 md:px-8 py-4 md:py-5 text-xs md:text-sm font-bold text-muted-foreground uppercase tracking-wider">Alat</th>
+                    <th className="px-4 md:px-8 py-4 md:py-5 text-xs md:text-sm font-bold text-muted-foreground uppercase tracking-wider">Ukuran</th>
+                    <th className="px-4 md:px-8 py-4 md:py-5 text-xs md:text-sm font-bold text-muted-foreground uppercase tracking-wider hidden md:table-cell">Waktu</th>
+                    <th className="px-4 md:px-8 py-4 md:py-5 text-xs md:text-sm font-bold text-muted-foreground uppercase tracking-wider">Status</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody className="divide-y divide-border/30">
+                  {logs.map((log) => (
+                    <tr key={log.id} className="group hover:bg-white/[0.02] transition-colors">
+                      <td className="px-4 md:px-8 py-4 md:py-6">
+                        <div className="flex items-center gap-3">
+                          <div className="p-2 rounded-lg bg-red-500/10 border border-red-500/20">
+                            <FileText className="w-4 h-4 md:w-5 md:h-5 text-red-500" />
+                          </div>
+                          <span className="font-semibold truncate max-w-[120px] md:max-w-[200px] text-sm" title={log.fileName}>
+                            {log.fileName}
+                          </span>
+                        </div>
+                      </td>
+                      <td className="px-4 md:px-8 py-4 md:py-6">
+                        <span className="inline-flex items-center px-2 md:px-3 py-1 rounded-full text-xs font-bold bg-primary/10 text-primary border border-primary/20 capitalize">
+                          {log.toolId.replace('-', ' ')}
+                        </span>
+                      </td>
+                      <td className="px-4 md:px-8 py-4 md:py-6 text-muted-foreground text-xs md:text-sm font-medium">
+                        {formatSize(log.fileSize)}
+                      </td>
+                      <td className="px-4 md:px-8 py-4 md:py-6 text-muted-foreground text-sm hidden md:table-cell">
+                        {new Date(log.createdAt).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' })}
+                      </td>
+                      <td className="px-4 md:px-8 py-4 md:py-6">
+                        {log.status === 'SUCCESS' ? (
+                          <span className="flex items-center gap-1.5 text-emerald-500 text-xs md:text-sm font-bold">
+                            <CheckCircle2 className="w-4 h-4" /> Berhasil
+                          </span>
+                        ) : (
+                          <span className="flex items-center gap-1.5 text-red-500 text-xs md:text-sm font-bold">
+                            <XCircle className="w-4 h-4" /> Gagal
+                          </span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
         )}
       </div>
       

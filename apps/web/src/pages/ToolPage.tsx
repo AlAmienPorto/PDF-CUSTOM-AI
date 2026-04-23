@@ -236,9 +236,9 @@ export function ToolPage() {
 
   if (isSuccess && tool) {
     return (
-      <div className="container max-w-screen-xl mx-auto px-4 py-12 animate-in fade-in zoom-in-95 duration-500 text-center relative flex-1 flex flex-col justify-center">
+      <div className="container max-w-screen-xl mx-auto px-4 sm:px-6 py-8 sm:py-12 animate-in fade-in zoom-in-95 duration-500 text-center relative flex-1 flex flex-col justify-center">
         {/* Breadcrumb Navbar */}
-        <nav className="flex items-center text-sm font-medium text-muted-foreground mb-8 absolute top-8 left-4">
+        <nav className="flex items-center text-xs sm:text-sm font-medium text-muted-foreground mb-6 sm:mb-8 relative sm:absolute sm:top-8 sm:left-4">
           <Link to="/" className="hover:text-foreground transition-colors">
             Semua Alat
           </Link>
@@ -246,25 +246,25 @@ export function ToolPage() {
           <span className="text-foreground">{tool.name}</span>
         </nav>
 
-        <div className="bg-card/40 backdrop-blur-3xl rounded-[3rem] border border-border/50 p-12 shadow-2xl overflow-hidden relative max-w-4xl mx-auto w-full">
+        <div className="bg-card/40 backdrop-blur-3xl rounded-2xl sm:rounded-[3rem] border border-border/50 p-6 sm:p-8 md:p-12 shadow-2xl overflow-hidden relative max-w-4xl mx-auto w-full">
           {/* Glow */}
           <div className={`absolute -top-24 -left-24 w-64 h-64 bg-gradient-to-br ${tool.color} blur-[80px] opacity-20`} />
           
-          <div className="inline-flex p-6 rounded-full bg-emerald-500/10 mb-8 border border-emerald-500/20">
-            <CheckCircle2 className="w-16 h-16 text-emerald-500" />
+          <div className="inline-flex p-4 sm:p-6 rounded-full bg-emerald-500/10 mb-6 sm:mb-8 border border-emerald-500/20">
+            <CheckCircle2 className="w-10 h-10 sm:w-16 sm:h-16 text-emerald-500" />
           </div>
           
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-transparent">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-3 sm:mb-4 tracking-tight bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-transparent">
             Berhasil Download!
           </h1>
-          <p className="text-muted-foreground text-lg mb-8 max-w-md mx-auto">
+          <p className="text-muted-foreground text-sm sm:text-lg mb-6 sm:mb-8 max-w-md mx-auto">
             {tool.id === 'compress' 
               ? `You saved ${((originalSize - compressedSize) / 1024 / 1024).toFixed(2)} MB (${Math.round((1 - compressedSize / originalSize) * 100)}%) of storage space!`
               : "File PDF Anda telah berhasil diproses dan diunduh secara otomatis."}
           </p>
 
           {tool.id === 'compress' && (
-            <div className="flex justify-center gap-8 mb-8 animate-in slide-in-from-bottom-2 duration-700">
+            <div className="flex justify-center gap-4 sm:gap-8 mb-6 sm:mb-8 animate-in slide-in-from-bottom-2 duration-700">
                <div className="flex flex-col items-center">
                   <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1">Before</span>
                   <span className="text-2xl font-bold line-through opacity-50">{(originalSize / 1024 / 1024).toFixed(2)} MB</span>
@@ -279,7 +279,7 @@ export function ToolPage() {
             </div>
           )}
 
-          <div className="flex flex-col items-center gap-6 mb-16">
+          <div className="flex flex-col items-center gap-4 sm:gap-6 mb-8 sm:mb-16">
              <button 
                onClick={handleDownload}
                className="text-sm font-semibold text-primary hover:underline flex items-center gap-2 transition-all hover:scale-105"
@@ -290,16 +290,16 @@ export function ToolPage() {
              
              <button 
                onClick={() => { resetPreview(); setFiles([]); }}
-               className="px-10 py-5 bg-foreground text-background rounded-2xl font-bold hover:scale-105 active:scale-95 transition-all shadow-xl flex items-center gap-2"
+                className="px-6 sm:px-10 py-4 sm:py-5 bg-foreground text-background rounded-2xl font-bold hover:scale-105 active:scale-95 transition-all shadow-xl flex items-center gap-2 text-sm sm:text-base"
              >
                Process File Lain
                <ArrowRight className="w-5 h-5" />
              </button>
           </div>
 
-          <div className="border-t border-border/50 pt-12 text-left">
-             <h3 className="font-bold text-xl mb-6">Butuh alat lain?</h3>
-             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="border-t border-border/50 pt-6 sm:pt-12 text-left">
+             <h3 className="font-bold text-lg sm:text-xl mb-4 sm:mb-6">Butuh alat lain?</h3>
+             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                 {TOOLS.filter(t => t.id !== tool.id).slice(0, 4).map(t => (
                   <Link 
                     key={t.id} 
@@ -339,9 +339,9 @@ export function ToolPage() {
       {/* Dynamic ambient background based on tool color */}
       <div className={`absolute top-1/4 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[400px] bg-gradient-to-r ${tool.color} blur-[120px] rounded-[100%] opacity-20 pointer-events-none`} />
 
-      <div className="container max-w-screen-xl mx-auto px-4 py-8 flex flex-col flex-1 z-10 relative">
+      <div className="container max-w-screen-xl mx-auto px-4 sm:px-6 py-4 sm:py-8 flex flex-col flex-1 z-10 relative">
         {/* Breadcrumb Navbar */}
-        <nav className="flex items-center text-sm font-medium text-muted-foreground mb-8">
+        <nav className="flex items-center text-xs sm:text-sm font-medium text-muted-foreground mb-4 sm:mb-8">
           <Link to="/" className="hover:text-foreground transition-colors">
             Semua Alat
           </Link>
@@ -352,39 +352,39 @@ export function ToolPage() {
         {files.length === 0 ? (
           <>
             {/* Header Hero Area */}
-            <div className="flex flex-col items-center justify-center mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
-              <div className={`p-4 rounded-2xl mb-6 bg-gradient-to-br ${tool.color} ring-1 ring-inset ring-white/10 shadow-xl inline-flex`}>
-                <Icon className={`w-12 h-12 ${tool.iconColor}`} strokeWidth={1.5} />
+            <div className="flex flex-col items-center justify-center mb-6 sm:mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
+              <div className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl mb-4 sm:mb-6 bg-gradient-to-br ${tool.color} ring-1 ring-inset ring-white/10 shadow-xl inline-flex`}>
+                <Icon className={`w-8 h-8 sm:w-12 sm:h-12 ${tool.iconColor}`} strokeWidth={1.5} />
               </div>
-              <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight text-center bg-gradient-to-br from-foreground via-foreground/90 to-muted-foreground bg-clip-text text-transparent">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-3 sm:mb-4 tracking-tight text-center bg-gradient-to-br from-foreground via-foreground/90 to-muted-foreground bg-clip-text text-transparent">
                 {tool.name}
               </h1>
-              <p className="text-muted-foreground text-center max-w-xl text-lg">
+              <p className="text-muted-foreground text-center max-w-xl text-sm sm:text-lg px-2">
                 {tool.description}
               </p>
             </div>
             
             {/* Futuristic Dropzone */}
-            <div className="flex-1 flex flex-col items-center px-4 md:px-0 animate-in fade-in zoom-in-95 duration-500 delay-150">
+            <div className="flex-1 flex flex-col items-center px-2 sm:px-4 md:px-0 animate-in fade-in zoom-in-95 duration-500 delay-150">
               <div 
                 onClick={open}
-                className={`group relative w-full max-w-4xl h-80 bg-card/10 backdrop-blur-md rounded-[2.5rem] border-2 border-dashed ${isDragActive ? 'border-primary/50' : 'border-white/20 hover:border-white/40'} flex flex-col items-center justify-center cursor-pointer transition-all duration-300 overflow-hidden ${tool.glow}`}
+                className={`group relative w-full max-w-4xl h-56 sm:h-72 md:h-80 bg-card/10 backdrop-blur-md rounded-2xl sm:rounded-[2.5rem] border-2 border-dashed ${isDragActive ? 'border-primary/50' : 'border-white/20 hover:border-white/40'} flex flex-col items-center justify-center cursor-pointer transition-all duration-300 overflow-hidden ${tool.glow}`}
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${tool.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
                 
-                <div className={`relative p-6 rounded-full mb-6 bg-card border border-white/5 shadow-2xl transition-transform duration-500 ${isDragActive ? 'scale-125' : 'group-hover:scale-110 group-hover:-translate-y-2'}`}>
+                <div className={`relative p-4 sm:p-6 rounded-full mb-4 sm:mb-6 bg-card border border-white/5 shadow-2xl transition-transform duration-500 ${isDragActive ? 'scale-125' : 'group-hover:scale-110 group-hover:-translate-y-2'}`}>
                   <div className="absolute inset-0 rounded-full animate-ping opacity-20" style={{ backgroundColor: "currentColor" }} />
-                  <UploadCloud className={`w-12 h-12 ${tool.iconColor}`} strokeWidth={1.5} />
+                  <UploadCloud className={`w-8 h-8 sm:w-12 sm:h-12 ${tool.iconColor}`} strokeWidth={1.5} />
                 </div>
                 
-                <p className="text-2xl font-bold mb-2 text-foreground tracking-tight">
+                <p className="text-lg sm:text-2xl font-bold mb-1 sm:mb-2 text-foreground tracking-tight">
                   Pilih file PDF
                 </p>
-                <p className="text-muted-foreground font-medium">atau seret PDF ke mana saja di layar</p>
+                <p className="text-xs sm:text-base text-muted-foreground font-medium">atau seret PDF ke mana saja di layar</p>
                 
                 <button 
                   type="button"
-                  className="mt-8 px-8 py-3 rounded-xl bg-foreground text-background font-semibold hover:scale-105 active:scale-95 transition-transform shadow-lg shadow-black/20 dark:shadow-white/5"
+                  className="mt-4 sm:mt-8 px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl bg-foreground text-background text-sm sm:text-base font-semibold hover:scale-105 active:scale-95 transition-transform shadow-lg shadow-black/20 dark:shadow-white/5"
                 >
                   Cari File
                 </button>
@@ -392,9 +392,9 @@ export function ToolPage() {
             </div>
           </>
         ) : (
-          <div className="flex flex-col lg:flex-row gap-8 animate-in fade-in slide-in-from-right-8 duration-500">
+          <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-8 animate-in fade-in slide-in-from-right-8 duration-500">
             {/* Workspace / Files Preview */}
-            <div className="flex-1 p-8 bg-card/40 backdrop-blur-3xl rounded-[2rem] border border-border/50 min-h-[600px] flex flex-col relative overflow-hidden shadow-2xl">
+            <div className="flex-1 p-4 sm:p-6 md:p-8 bg-card/40 backdrop-blur-3xl rounded-2xl sm:rounded-[2rem] border border-border/50 min-h-[300px] sm:min-h-[400px] lg:min-h-[600px] flex flex-col relative overflow-hidden shadow-2xl">
               
               {previewUrl && previewBytes ? (
                 // PDF Native Embed Viewer OR Visual Reorder Output
@@ -427,7 +427,7 @@ export function ToolPage() {
                 </div>
               ) : (
                 // File Grid Viewer
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 content-start flex-1">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 content-start flex-1">
                   {files.map((file, idx) => (
                     <div 
                       key={`${file.name}-${idx}`} 
@@ -461,7 +461,7 @@ export function ToolPage() {
                   {(tool.id !== 'split' && tool.id !== 'remove' && tool.id !== 'rotate' || files.length === 0) && (
                     <div 
                       onClick={open}
-                      className="rounded-2xl border-2 border-dashed border-border hover:border-primary flex flex-col items-center justify-center p-4 cursor-pointer text-muted-foreground hover:text-primary transition-colors min-h-[200px]"
+                      className="rounded-2xl border-2 border-dashed border-border hover:border-primary flex flex-col items-center justify-center p-4 cursor-pointer text-muted-foreground hover:text-primary transition-colors min-h-[140px] sm:min-h-[200px]"
                     >
                       <UploadCloud className="w-8 h-8 mb-2" />
                       <span className="text-sm font-medium">Tambah lagi</span>
@@ -472,8 +472,8 @@ export function ToolPage() {
             </div>
 
             {/* Sidebar Configuration */}
-            <div className="w-full lg:w-[350px] flex flex-col gap-4">
-              <div className="p-6 rounded-3xl bg-card border border-border/50 flex-1">
+            <div className="w-full lg:w-[320px] xl:w-[350px] flex flex-col gap-3 sm:gap-4">
+              <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-card border border-border/50 flex-1">
                 <div className="flex items-center gap-2 mb-6">
                   <Settings2 className="w-5 h-5 text-primary" />
                   <h3 className="font-bold text-lg">Pengaturan</h3>
@@ -612,7 +612,7 @@ export function ToolPage() {
               <button 
                 onClick={previewUrl ? handleDownload : handleExecute}
                 disabled={files.length === 0 || isProcessing}
-                className={`w-full py-5 rounded-2xl font-bold flex justify-center items-center gap-2 shadow-xl transition-all text-white drop-shadow-md border border-white/10 bg-gradient-to-r ${tool.color.replace(/\/\d+/, '')} from-50% ${
+                className={`w-full py-4 sm:py-5 rounded-xl sm:rounded-2xl font-bold flex justify-center items-center gap-2 shadow-xl transition-all text-white text-sm sm:text-base drop-shadow-md border border-white/10 bg-gradient-to-r ${tool.color.replace(/\/\d+/, '')} from-50% ${
                   files.length === 0 || isProcessing ? "opacity-50 cursor-not-allowed" : "hover:scale-[1.02] active:scale-95 shadow-primary/20"
                 }`}
               >

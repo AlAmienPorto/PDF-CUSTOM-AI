@@ -5,19 +5,19 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc",
+    "build": "npx tsc",
     "start": "node dist/index.js"
   },
   "dependencies": {
     "@hono/node-server": "^1.10.1",
     "@prisma/client": "^5.12.1",
     "hono": "^4.2.1",
-    "muhammara": "^6.0.4"
+    "muhammara": "^6.0.4",
+    "typescript": "^5.4.5"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",
     "prisma": "^5.12.1",
-    "tsx": "^4.7.2",
-    "typescript": "^5.4.5"
+    "tsx": "^4.7.2"
   }
 }

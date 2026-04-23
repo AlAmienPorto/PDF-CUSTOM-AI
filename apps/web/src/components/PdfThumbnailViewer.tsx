@@ -84,13 +84,13 @@ export function PdfThumbnailViewer({ bytes, onOrderChange }: PdfThumbnailViewerP
   }
 
   return (
-    <div className="w-full h-full p-4 overflow-y-auto bg-card/10 rounded-[2rem] border border-white/10 shadow-inner min-h-[500px]">
+    <div className="w-full h-full p-2 sm:p-4 overflow-y-auto bg-card/10 rounded-xl sm:rounded-[2rem] border border-white/10 shadow-inner min-h-[300px] sm:min-h-[500px]">
       <div className="flex items-center justify-between mb-6 px-2">
-        <h3 className="font-bold text-lg">Visual Page Reordering</h3>
+        <h3 className="font-bold text-sm sm:text-lg">Visual Page Reordering</h3>
         <span className="text-sm text-primary font-medium">{thumbnails.length} Pages</span>
       </div>
       
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
         {order.map((originalIdx, currentIdx) => (
           <div
             key={`page-${originalIdx}`}
