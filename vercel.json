@@ -1,6 +1,6 @@
 {
   "installCommand": "npx pnpm install --no-frozen-lockfile",
-  "buildCommand": "npx pnpm run build",
+  "buildCommand": "npx pnpm --filter @pdf-custom/web run build && mv apps/web/dist dist",
   "outputDirectory": "dist",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
